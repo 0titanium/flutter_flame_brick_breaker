@@ -2,9 +2,10 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flame_brick_breaker/src/brick_breaker.dart';
-import 'package:flutter_flame_brick_breaker/src/components/ball.dart';
-import 'package:flutter_flame_brick_breaker/src/components/bat.dart';
 import 'package:flutter_flame_brick_breaker/src/config.dart';
+
+import 'ball.dart';
+import 'bat.dart';
 
 class Brick extends RectangleComponent
     with CollisionCallbacks, HasGameReference<BrickBreaker> {
