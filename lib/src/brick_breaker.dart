@@ -6,8 +6,6 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_flame_brick_breaker/src/components/ball.dart';
-import 'package:flutter_flame_brick_breaker/src/components/bat.dart';
 
 import 'components/components.dart';
 import 'config.dart';
@@ -37,11 +35,13 @@ class BrickBreaker extends FlameGame
     world.add(PlayArea());
 
     world.add(Ball(
-        radius: ballRadius,
-        position: size / 2,
-        velocity: Vector2((rand.nextDouble() - 0.5) * width, height * 0.2)
-            .normalized()
-          ..scale(height / 4)));
+      radius: ballRadius,
+      position: size / 2,
+      velocity:
+          Vector2((rand.nextDouble() - 0.5) * width, height * 0.2).normalized()
+            ..scale(height / 4),
+      difficultyModifier: difficultyModifier,
+    ));
 
     world.add(Bat(
         cornerRadius: const Radius.circular(ballRadius / 2),
@@ -50,6 +50,18 @@ class BrickBreaker extends FlameGame
           batWidth,
           batHeight,
         )));
+
+    await world.addAll([
+      for (var i = 0; i < brickColors.length; i++)
+        for (var j = 1; j <= 5; j++)
+          Brick(
+            position: Vector2(
+              (i + 0.5) * brickWidth + (i + 1) * brickGutter,
+              (j + 2.0) * brickHeight + j * brickGutter,
+            ),
+            color: brickColors[i],
+          ),
+    ]);
 
     debugMode = true;
   }
