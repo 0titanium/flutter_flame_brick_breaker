@@ -1,9 +1,9 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_flame_brick_breaker/src/brick_breaker.dart';
+import 'package:flutter_flame_brick_breaker/src/config.dart';
 
-import '../brick_breaker.dart';
-import '../config.dart';
 import 'ball.dart';
 import 'bat.dart';
 
